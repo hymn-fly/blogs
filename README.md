@@ -38,12 +38,14 @@ Please see the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy#d
 
 This work is published under [MIT][mit] License.
 
+## Tips
+
+- \_tabs : 해당 폴더는 왼쪽 사이드바의 메뉴들을 정의하는 md 파일들이 모여있는 폴더임. 메뉴 추가하려면, 해당 폴더에 md 파일 추가하면서 layout 사용하면 됨
+- Chirpy 테마 사용법 잘 정리해놓은 [블로그][blog]
+
 [gem]: https://rubygems.org/gems/jekyll-theme-chirpy
 [chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
 [use-template]: https://github.com/cotes2020/chirpy-starter/generate
 [CD]: https://en.wikipedia.org/wiki/Continuous_deployment
 [mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
-
-## Tips
-
-- \_tabs : 해당 폴더는 왼쪽 사이드바의 메뉴들을 정의하는 md 파일들이 모여있는 폴더임. 메뉴 추가하려면, 해당 폴더에 md 파일 추가하면서 layout 사용하면 됨
+[blog]: https://www.irgroup.org/
