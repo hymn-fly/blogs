@@ -13,7 +13,7 @@ toc: true
 &emsp;환경별로 DB를 다 다르게 구성을 해서 Spring의 test profile도 환경별로 다 나눠야 하나 라는 이상한 고민을 하다가 `TestContainer`를 도입하면 test가 진행될 때 외부 의존성(Container로 떠 있는 MSSQL DB)이 없어짐으로써 아주 깔끔한 구성이 되겠다는 생각에 도입을 진행해 봤다.
 
 ## MSSQL Test Container 구성[^footnote1]
- 해당 [가이드](https://tipsontech.medium.com/integration-testing-of-springboot-with-ms-sql-server-using-testcontainers-22058cb50b54)를 보고 진행을 했다. 코드는 아래와 같다.
+ 가이드[^footnote3]를 보고 진행을 했다. 코드는 아래와 같다.
 ```java
 @Container
 private static final MSSQLServerContainer<?> SQLSERVER_CONTAINER = new MSSQLServerContainer<>(
@@ -37,7 +37,7 @@ static {
 즉, 디자인적으로 포트 충돌 방지하기 위해서 랜덤으로 꼭 생성된다는 것이다. 어쩔 수 없이 yaml 파일에 정적으로 박아넣는것은 불가능했다.
 
 ### DataSource Bean 커스터마이징[^footnote2]
-&emsp;그래서 생각한 것이 `DataSource` 를 직접 정의해서 Bean으로 등록하는 것이었다. `DataSource` 직접 정의 하는 코드는 아래와 같다. [참고]()
+&emsp;그래서 생각한 것이 `DataSource` 를 직접 정의해서 Bean으로 등록하는 것이었다. `DataSource` 직접 정의 하는 코드는 아래와 같다.
 ```java
 @Bean
 public DataSource dataSource() {
@@ -113,5 +113,5 @@ public class TestConfig {
 ## 참고
 [^footnote1]: [TestContainer for Java: MS SQL Server Module](https://java.testcontainers.org/modules/databases/mssqlserver/)
 [^footnote2]: [Baeldung: Spring Boot Configure Data Source Programmatic](https://www.baeldung.com/spring-boot-configure-data-source-programmatic)
-
+[^footnote3]: [Medium: Integration testing of SpringBoot with MS SQL Server using TestContainers](https://tipsontech.medium.com/integration-testing-of-springboot-with-ms-sql-server-using-testcontainers-22058cb50b54)
 
