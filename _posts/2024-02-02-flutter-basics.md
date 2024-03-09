@@ -1,8 +1,8 @@
 ---
 title: Flutter 앱 개발 기본
 date: 2024-02-02 22:30:00 +0900
-categories: [Flutter, Dart]
-tags: [flutter] # TAG names should always be lowercase
+categories: [App, Flutter]
+tags: [App] # TAG names should always be lowercase
 toc: true
 ---
 

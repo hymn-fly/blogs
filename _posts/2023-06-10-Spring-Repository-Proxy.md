@@ -2,7 +2,7 @@
 title: Spring JpaRepository와 @Repository의 Proxy 생성방식 비교
 date: 2023-06-10 15:30:00 +0900
 categories: [Spring, Jpa]
-tags: [spring] # TAG names should always be lowercase
+tags: [Spring] # TAG names should always be lowercase
 toc: true
 ---
 

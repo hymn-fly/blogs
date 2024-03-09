@@ -1,8 +1,8 @@
 ---
 title: Servlet Container, Servlet, Filter 와 Spring Boot에서의 사용법 정리
 date: 2023-06-17 14:00:00 +0900
-categories: [Spring, Web]
-tags: [spring] # TAG names should always be lowercase
+categories: [Java, Spring]
+tags: [Spring] # TAG names should always be lowercase
 toc: true
 ---
 
