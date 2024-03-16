@@ -82,3 +82,11 @@ dependencyManagement {
 &ensp;해당 플러그인에 대해서 알고 flyway-core의 버전을 바꾸었지만 그 문제가 아니였고, 결국 `org.flywaydb:flyway-databae-postgresql`를 제거하고 `org.flywaydb:flyway-core` 만 사용함으로써 postgresql DB에 대해 flyway 셋업은 완료하였다. <br />
 이번 기회를 통해 Flyway 문서에 대한 신뢰도가 떨어졌고... 그러나 덕분에 이제까지 Spring을 사용하면서 잘은 몰랐던 Gradle이 어떻게 의존성을 관리하고 가져오는지에 대해 좀 더 이해할 수 있었다. 또한 gradle dependencies, dependencyManagement 태스크 등을 통해 의존성을 상세하게 확인할 수 있다는 걸 알게 되었다.
 
+## 참고링크
+[1] [Flyway Postgresql DB 적용방법](https://documentation.red-gate.com/flyway/flyway-cli-and-api/supported-databases/postgresql-database)
+
+[2] [Dependency Management Plugin Github](https://github.com/spring-gradle-plugins/dependency-management-plugin)
+
+[3] [Dependency Management Plugin Spring Docs](https://docs.spring.io/dependency-management-plugin/docs/current-SNAPSHOT/reference/html/#introduction)
+
+[4] [Gradle dependency constraint](https://docs.gradle.org/current/userguide/dependency_constraints.html#sec:adding-constraints-transitive-deps)
