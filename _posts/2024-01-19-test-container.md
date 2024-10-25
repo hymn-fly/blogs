@@ -1,7 +1,7 @@
 ---
 title: Spring MSSQL Test Container 도입기
 date: 2024-01-19 22:00:00 +0900
-categories: [Java, Spring]
+categories: [Spring]
 tags: [Spring] # TAG names should always be lowercase
 toc: true
 ---
