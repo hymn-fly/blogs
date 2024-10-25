@@ -1,7 +1,7 @@
 ---
 title: io.spring.dependency-management plugin에 대하여
 date: 2024-03-16 11:50:00 +0900
-categories: [Java, Gradle]
+categories: [Gradle]
 tags: [Gradle] # TAG names should always be lowercase
 toc: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: Gradle Multi Project Build 구성하기
 date: 2024-01-11 20:00:00 +0900
-categories: [Java, Gradle]
+categories: [Gradle]
 tags: [Gradle] # TAG names should always be lowercase
 toc: true
 ---
