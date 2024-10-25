@@ -38,7 +38,7 @@ fun configMigration(migrationType: MigrationType): Any? {
 ```
 
 위의 코드와 같이 company 엔티티를 업데이트하고자 했고, save에서 예외가 발생한다 생각해서 try catch 구문을 넣었다. 그러나 예외가 로깅이 되지 않고 헤매다가, `@DynamicUpdate`를 이용하는 우회전략을 취했던 것이다. <br>
-살펴보니 @Transactional 이 있으면 `configMigration()` 메서드 내부에서 `save()`를 호출할때 update 쿼리가 바로 DB로 전달되지 않는다(쓰기지연). 대신 메서드가 종료되고 난후 `JpaTransactionManager` 에서 `doCommit()` 메서드가 호출될 때 해당 쿼리가 DB로 전달되면서 예외가 발생하기에 메서드 내부에서는 catch 를 통해 예외를 잡을 수 없었던 것이었다.
+살펴보니 @Transactional 이 있으면 `configMigration()` 메서드 내부에서 `save()`를 호출할때 update 쿼리가 바로 DB로 전달되지 않는다(쓰기지연). 대신 영속성 컨텍스트에 해당 쿼리를 보관해 두고, 메서드가 종료되고 난후 `JpaTransactionManager` 에서 `doCommit()` 메서드가 호출될 때 영속성 컨텍스트에 있던 쿼리가 DB로 전달된다. 이 때 예외가 발생하기에 메서드 내부에서는 catch 를 통해 예외를 잡을 수 없었던 것이었다.
 
 ### @Transactional 의 작동 원리로 알아보는 예외가 잡히지 않은 이유
 
@@ -92,7 +92,7 @@ try {
 }
 ```
 
-위 코드를 살펴보면 `tx.commit()`이 호출될 때 내가 원했던 update 쿼리가 db로 한번에 날아가게 되고, 그때 인코딩이 맞지 않는 오류로 인해 Data를 Update 칠 수 없어 예외가 발생하고 그 예외가 아래 catch 문들에 잡혀서 configMigration() 메서드 내부에서는 예외를 잡을 수 없었던 것이다. (이미 해당 메서드는 종료되고 나왔으니까)
+위 코드를 살펴보면 `tx.commit()`이 호출될 때 update 쿼리가 db로 한번에 날아가게 되고, 그때 인코딩이 맞지 않는 오류로 인해 Data를 Update 칠 수 없어 예외가 발생하고 그 예외가 위 코드의 catch block에 잡혀서 configMigration() 메서드 내부에서는 예외를 잡을 수 없었던 것이다. (이미 해당 메서드는 종료되고 나왔으니까)
 
 ### @Transactional 내부에서도 예외를 잡을수 있는 경우가 있다?
 기본적으로는 @Transactional 내부에서 save() 메서드 호출시 발생하는 예외는 내부에서 잡을 수 없지만(트랜잭션이 커밋되면서 DB 로 쿼리가 반영되니까), 예외 케이스가 존재한다. <br/>
